@@ -3,4 +3,4 @@ project(untitled)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(untitled main.cpp)
+add_executable(untitled main.cpp Face.cpp Face.h Cube.cpp Cube.h)

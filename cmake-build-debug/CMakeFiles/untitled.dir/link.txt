@@ -1,1 +1,1 @@
-/usr/bin/c++ -g CMakeFiles/untitled.dir/main.cpp.o -o untitled 
+/usr/bin/c++ -g CMakeFiles/untitled.dir/main.cpp.o CMakeFiles/untitled.dir/Face.cpp.o CMakeFiles/untitled.dir/Cube.cpp.o -o untitled 

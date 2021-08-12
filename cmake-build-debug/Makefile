@@ -129,6 +129,54 @@ untitled/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/build
 .PHONY : untitled/fast
 
+Cube.o: Cube.cpp.o
+.PHONY : Cube.o
+
+# target to build an object file
+Cube.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/Cube.cpp.o
+.PHONY : Cube.cpp.o
+
+Cube.i: Cube.cpp.i
+.PHONY : Cube.i
+
+# target to preprocess a source file
+Cube.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/Cube.cpp.i
+.PHONY : Cube.cpp.i
+
+Cube.s: Cube.cpp.s
+.PHONY : Cube.s
+
+# target to generate assembly for a file
+Cube.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/Cube.cpp.s
+.PHONY : Cube.cpp.s
+
+Face.o: Face.cpp.o
+.PHONY : Face.o
+
+# target to build an object file
+Face.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/Face.cpp.o
+.PHONY : Face.cpp.o
+
+Face.i: Face.cpp.i
+.PHONY : Face.i
+
+# target to preprocess a source file
+Face.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/Face.cpp.i
+.PHONY : Face.cpp.i
+
+Face.s: Face.cpp.s
+.PHONY : Face.s
+
+# target to generate assembly for a file
+Face.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/Face.cpp.s
+.PHONY : Face.cpp.s
+
 main.o: main.cpp.o
 .PHONY : main.o
 
@@ -162,6 +210,12 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... untitled"
+	@echo "... Cube.o"
+	@echo "... Cube.i"
+	@echo "... Cube.s"
+	@echo "... Face.o"
+	@echo "... Face.i"
+	@echo "... Face.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

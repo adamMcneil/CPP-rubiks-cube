@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/untitled.dir/Cube.cpp.o"
+  "CMakeFiles/untitled.dir/Face.cpp.o"
   "CMakeFiles/untitled.dir/main.cpp.o"
   "untitled"
   "untitled.pdb"

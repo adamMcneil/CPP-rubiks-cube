@@ -6,7 +6,15 @@
 
 #IncludeRegexTransform: 
 
+/home/adam/CLionProjects/untitled/Cube.h
+Face.h
+/home/adam/CLionProjects/untitled/Face.h
+
+/home/adam/CLionProjects/untitled/Face.h
+
 /home/adam/CLionProjects/untitled/main.cpp
 iostream
 -
+Cube.h
+/home/adam/CLionProjects/untitled/Cube.h
 

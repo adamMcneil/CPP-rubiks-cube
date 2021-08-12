@@ -1,6 +1,17 @@
 #include <iostream>
+#include "Cube.h"
+using namespace std;
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
-    return 0;
+    char colors[6] = {'y','b','r','g','o','w'};
+    Cube cube(colors);
+    for (int i = 0; i < 6; i++){
+        Face face = cube.getFace(i);
+        for (int j = 0; j < 9; j++){
+            if (j % 3 == 0 ){
+                cout << endl;
+            }
+            cout << face.getColor(j);
+        }
+    }
 }

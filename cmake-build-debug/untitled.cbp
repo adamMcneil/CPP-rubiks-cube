@@ -82,6 +82,18 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/adam/CLionProjects/untitled/Cube.cpp">
+			<Option target="untitled"/>
+		</Unit>
+		<Unit filename="/home/adam/CLionProjects/untitled/Cube.h">
+			<Option target="untitled"/>
+		</Unit>
+		<Unit filename="/home/adam/CLionProjects/untitled/Face.cpp">
+			<Option target="untitled"/>
+		</Unit>
+		<Unit filename="/home/adam/CLionProjects/untitled/Face.h">
+			<Option target="untitled"/>
+		</Unit>
 		<Unit filename="/home/adam/CLionProjects/untitled/main.cpp">
 			<Option target="untitled"/>
 		</Unit>
