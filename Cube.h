@@ -9,7 +9,6 @@
 class Cube {
 public:
     Cube(char[6]);
-    Cube copyCube();
     Face getFace(int);
     void turnU();
     void turnUp();

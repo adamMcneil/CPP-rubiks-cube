@@ -19,25 +19,30 @@ void Cube::turnU() {
     //  4-3
     //  3-2
     //  2-1
-    cube[0];
-    int indexes[8] = {1, 4, 4, 3, 3, 2, 2, 1};
-    char oldCube[12] = {' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '};
-    int index = 0;
-    int cubeIndex = 0;
-    for (int i = 0; i < 8; i+=2){
-        for (int j = 0; j < 3; j++){
-            oldCube[index] = cube[indexes[i]].getColor(j);
-            index++;
+    int whatFace[8] = {1, 4, 4, 3, 3, 2, 2, 1};
+    int whatSpot[12] = {1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3};
+    char oldCube[12] = {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '};
+    for (int i = 0; i < 8; i += 2) {
+        for (int j = 0; j < 12; j++) {
+            oldCube[j] = cube[whatFace[whatSpot[j]]].getColor(j);
         }
     }
-    for (int i = 1; i < 8; i+=2) {
-        for (int j = 0; j < 3; j++) {
-            cube[indexes[i]].setSquare(j, oldCube[j + cubeIndex]);
+    for (int i = 1; i < 8; i += 2) {
+        for (int j = 0; j < 12; j++) {
+            cube[whatFace[i]].setSquare(whatSpot[12], oldCube[j]);
         }
-        cubeIndex += 3;
     }
-    // 02 28 86 60
-    //15 57 73 31
+    // 0-2 2-8 8-6 6-0
+    // 1-5 5-7 7-3 3-1
+    int indexesOld[8] = {0, 2, 8, 6, 1, 5, 7, 3};
+    int indexesNew[8] = {2, 8, 6, 0, 5, 7, 3, 1};
+    char oldFace[8] = {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '};
+    for (int i = 0; i < 8; i++) {
+        oldFace[i] = cube[0].getColor(indexesOld[i]);
+    }
+    for (int i = 0; i < 8; i++) {
+        cube[indexesNew[i]] = oldFace[i];
+    }
 }
 
 void Cube::turnUp() {
@@ -45,6 +50,30 @@ void Cube::turnUp() {
     //  3-4
     //  2-3
     //  1-2
+    int whatFace[8] = {1, 4, 4, 3, 3, 2, 2, 1};
+    int whatSpot[12] = {1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3};
+    char oldCube[12] = {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '};
+    for (int i = 1; i < 8; i += 2) {
+        for (int j = 0; j < 12; j++) {
+            oldCube[j] = cube[whatFace[whatSpot[j]]].getColor(j);
+        }
+    }
+    for (int i = 0; i < 8; i += 2) {
+        for (int j = 0; j < 12; j++) {
+            cube[whatFace[i]].setSquare(whatSpot[12], oldCube[j]);
+        }
+    }
+    // 0-2 2-8 8-6 6-0
+    // 1-5 5-7 7-3 3-1
+    int indexesNew[8] = {0, 2, 8, 6, 1, 5, 7, 3};
+    int indexesOld[8] = {2, 8, 6, 0, 5, 7, 3, 1};
+    char oldFace[8] = {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '};
+    for (int i = 0; i < 8; i++) {
+        oldFace[i] = cube[0].getColor(indexesOld[i]);
+    }
+    for (int i = 0; i < 8; i++) {
+        cube[indexesNew[i]] = oldFace[i];
+    }
 }
 
 void Cube::turnD() {

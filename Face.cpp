@@ -12,7 +12,7 @@ Face::Face(char givenColor) {
     char Face::getColor(int i) {
         return face[i];
     }
-    void Face::setSquare(int i, char x) {
-    face[i] = x;
+    void Face::setSquare(int position, char color) {
+    face[position] = color;
 }
 

@@ -10,7 +10,7 @@ class Face {
 public:
     Face(char);
     char getColor(int i);
-    void setSquare(int i, char x);
+    void setSquare(int position, char color);
 
 private:
     char color;
