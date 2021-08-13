@@ -12,9 +12,9 @@ public:
     char getColor(int i);
     void setSquare(int position, char color);
 
+    char face[9] = {' ',' ',' ',' ',' ',' ',' ',' ',' '};
 private:
     char color;
-    char face[9] = {' ',' ',' ',' ',' ',' ',' ',' ',' '};
 };
 
 

@@ -8,6 +8,7 @@ int main() {
     cube.turnU();
     for (int i = 0; i < 6; i++){
         Face face = cube.getFace(i);
+        cout << endl;
         for (int j = 0; j < 9; j++){
             if (j % 3 == 0 ){
                 cout << endl;
