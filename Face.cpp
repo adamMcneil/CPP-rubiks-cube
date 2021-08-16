@@ -14,5 +14,7 @@ Face::Face(char givenColor) {
     }
     void Face::setSquare(int position, char color) {
     face[position] = color;
+
+
 }
 

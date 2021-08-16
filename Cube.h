@@ -22,8 +22,9 @@ public:
     void turnFp();
     void turnB();
     void turnBp();
-private:
     Face cube[6] = {Face(' '),Face(' '),Face(' '),Face(' '),Face(' '),Face(' ')};
+    void printCube();
+private:
 };
 
 
