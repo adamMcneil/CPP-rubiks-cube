@@ -23,6 +23,7 @@ public:
     void turnB();
     void turnBp();
     Face cube[6] = {Face(' '),Face(' '),Face(' '),Face(' '),Face(' '),Face(' ')};
+    void solveCube();
     void printCube();
 private:
 };

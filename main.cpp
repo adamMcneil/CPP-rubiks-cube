@@ -9,11 +9,23 @@ int main() {
 
     rubiks.turnR();
     rubiks.turnU();
+    rubiks.turnU();
+    rubiks.turnB();
+    rubiks.turnDp();
+    rubiks.turnL();
+    rubiks.turnD();
+    rubiks.turnBp();
+    rubiks.turnF();
+    rubiks.turnLp();
     rubiks.turnRp();
     rubiks.turnUp();
-    rubiks.turnLp();
     rubiks.turnFp();
-    rubiks.turnBp();
+    rubiks.turnR();
+    rubiks.turnU();
+    rubiks.turnB();
+    rubiks.turnDp();
+    rubiks.turnL();
+    rubiks.turnD();
 
     rubiks.printCube();
 }

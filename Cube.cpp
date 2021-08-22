@@ -11,6 +11,14 @@ Cube::Cube(char colors[6]) {
     }
 }
 
+void Cube::solveCube(){
+    //solve white
+    
+
+
+    //
+}
+
 void Cube::printCube() {
     for (int i = 0; i < 6; i++) {
         std::cout << "\n";
@@ -252,7 +260,7 @@ void Cube::turnL() {
     char oldCube[12] = {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '};
     int index = 0;
     int position1[] = {0, 3, 6, 0, 3, 6, 2, 5, 8, 0, 3, 6};
-    int position2[] = {6, 3, 0, 0, 3, 6, 6, 3, 0, 8, 5, 2};
+    int position2[] = {0, 3, 6, 0, 3, 6, 6, 3, 0, 8, 5, 2};
     int faces[] = {2, 5, 0, 2, 4, 0, 5, 4};
     for (int i = 0; i < 8; i += 2) {
         for (int j = 0; j < 3; j++) {
@@ -288,7 +296,7 @@ void Cube::turnLp() {
     char oldCube[12] = {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '};
     int index = 0;
     int position1[] = {0, 3, 6, 0, 3, 6, 0, 3, 6, 2, 5, 8};
-    int position2[] = {6, 3, 0, 0, 3, 6, 8, 5, 2, 6, 3, 0};
+    int position2[] = {0, 3, 6, 0, 3, 6, 8, 5, 2, 6, 3, 0};
     int faces[] = {5, 2, 2, 0, 0, 4, 4, 5};
     for (int i = 0; i < 8; i += 2) {
         for (int j = 0; j < 3; j++) {
