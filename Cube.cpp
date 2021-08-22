@@ -20,13 +20,27 @@ void Cube::solveCube(){
 }
 
 void Cube::printCube() {
-    for (int i = 0; i < 6; i++) {
+    for (int i = 0; i < 9; i+=3) {
         std::cout << "\n";
-        for (int j = 0; j < 9; j++) {
-            if (j % 3 == 0) {
-                std::cout << std::endl;
+        std::cout << "     ";
+        for (int j = 0; j < 3; j++) {
+            std::cout << this->cube[0].getColor(j + i);
+        }
+    }
+    for (int i = 0; i < 9; i+=3){
+        std::cout << "\n";
+        for (int j = 1; j < 5; j++){
+            std::cout << " ";
+            for (int k = 0; k < 3; k++){
+                std::cout << this->cube[j].getColor(k + i);
             }
-            std::cout << this->cube[i].getColor(j);
+        }
+    }
+    for (int i = 0; i < 9; i+=3) {
+        std::cout << "\n";
+        std::cout << "     ";
+        for (int j = 0; j < 3; j++) {
+            std::cout << this->cube[5].getColor(j + i);
         }
     }
 }
