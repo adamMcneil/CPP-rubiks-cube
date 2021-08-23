@@ -11,32 +11,65 @@ Cube::Cube(char colors[6]) {
     }
 }
 
-void Cube::solveCube(){
-    //solve white
-    
+std::string Cube::getOtherMiddleColorYellow(int position) {
+    // 1-4
+    // 3-1
+    // 5-3
+    // 7-2
+    int i = position;
+    int count = 2;
+    i -= count;
+    while (!(i < 4 && i > 0) && count < 3) {
+        count++;
+        i -= count;
+    }
+    std::string str;
+    str = this->getFace(abs(i)).getColor(1);
+    str.append((abs(i)), 1);
+    return str;
 
-
-    //
 }
 
+//void Cube::solveCube() {
+//    //solve white
+//    int count = 0;
+//    int spots[4] = {1, 3, 5, 7};
+//    for (int i : spots) {
+//        if (this->getFace(0).getColor(i) == 'w') {
+//            while ()
+//        }
+//    }
+//    for (Face face : this->cube) {
+//        for (int i : spots) {
+//            if (face.getColor(i) == 'w') {
+//                count++;
+//
+//            }
+//        }
+//    }
+//
+//
+//    //
+//}
+
 void Cube::printCube() {
-    for (int i = 0; i < 9; i+=3) {
+    for (int i = 0; i < 9; i += 3) {
         std::cout << "\n";
         std::cout << "     ";
         for (int j = 0; j < 3; j++) {
             std::cout << this->cube[0].getColor(j + i);
         }
     }
-    for (int i = 0; i < 9; i+=3){
+    for (int i = 0; i < 9; i += 3) {
         std::cout << "\n";
-        for (int j = 1; j < 5; j++){
+        for (int j = 1; j < 5; j++) {
             std::cout << " ";
-            for (int k = 0; k < 3; k++){
+            for (int k = 0; k < 3; k++) {
                 std::cout << this->cube[j].getColor(k + i);
             }
         }
     }
-    for (int i = 0; i < 9; i+=3) {
+    for (int i = 0; i < 9; i += 3) {
         std::cout << "\n";
         std::cout << "     ";
         for (int j = 0; j < 3; j++) {

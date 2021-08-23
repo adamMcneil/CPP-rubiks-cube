@@ -4,6 +4,8 @@
 
 #ifndef UNTITLED_CUBE_H
 #define UNTITLED_CUBE_H
+
+#include <string>
 #include "Face.h"
 
 class Cube {
@@ -25,6 +27,7 @@ public:
     Face cube[6] = {Face(' '),Face(' '),Face(' '),Face(' '),Face(' '),Face(' ')};
     void solveCube();
     void printCube();
+    std::string getOtherMiddleColorYellow(int position);
 private:
 };
 
