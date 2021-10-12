@@ -26,6 +26,9 @@ public:
     void turnBp();
     Face cube[6] = {Face(' '),Face(' '),Face(' '),Face(' '),Face(' '),Face(' ')};
     void solveCube();
+    void rightHandRule(int, bool);
+    bool isCubeSolved();
+    void mixCube();
     void printCube();
     std::string getOtherMiddleColorYellow(int position);
 private:
