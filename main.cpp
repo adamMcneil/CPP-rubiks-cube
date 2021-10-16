@@ -7,11 +7,6 @@ int main() {
     char colors[6] = {'y', 'b', 'r', 'g', 'o', 'w'};
     Cube rubiks(colors);
     rubiks.mixCube();
-    rubiks.printCube();
-
-
     rubiks.solveCube();
-
-
     rubiks.printCube();
 }

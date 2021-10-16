@@ -6,6 +6,14 @@
 
 #IncludeRegexTransform: 
 
+/home/adam/programs/CLionProjects/untitled/Cube.cpp
+Cube.h
+/home/adam/programs/CLionProjects/untitled/Cube.h
+iostream
+-
+random
+-
+
 /home/adam/programs/CLionProjects/untitled/Cube.h
 string
 -

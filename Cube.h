@@ -30,7 +30,6 @@ public:
     bool isCubeSolved();
     void mixCube();
     void printCube();
-    std::string getOtherMiddleColorYellow(int position);
 private:
 };
 

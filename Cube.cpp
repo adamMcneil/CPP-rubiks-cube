@@ -12,25 +12,6 @@ Cube::Cube(char colors[6]) {
     }
 }
 
-std::string Cube::getOtherMiddleColorYellow(int position) {
-    // 1-4
-    // 3-1
-    // 5-3
-    // 7-2
-    int i = position;
-    int count = 2;
-    i -= count;
-    while (!(i < 4 && i > 0) && count < 3) {
-        count++;
-        i -= count;
-    }
-    std::string str;
-    str = this->getFace(abs(i)).getColor(1);
-    str.append((abs(i)), 1);
-    return str;
-
-}
-
 void Cube::mixCube() {
     for (int x = 0; x < 15; x++) {
         std::random_device dev;
@@ -79,42 +60,42 @@ void Cube::mixCube() {
 void Cube::solveCube() {
     //solve daisy
     int daisyCount = 0;
-    int slots[] = {1, 3, 5, 7};
-
-    for (int x: slots) {
-        if (this->cube[0].getColor(x) == 'w') {
-            daisyCount++;
-        }
-    }
-    for (int x: slots) {
-        if (this->cube[5].getColor(x) == 'w') {
-            daisyCount++;
-            while (this->cube[0].getColor(3 - x) == 'w') {
-                turnU();
-            }
-            if (x == 1) {
-                turnF();
-                turnF();
-            }
-            if (x == 3) {
-                turnL();
-                turnL();
-            }
-            if (x == 5) {
-                turnR();
-                turnR();
-            }
-            if (x == 7) {
-                turnB();
-                turnB();
-            }
-        }
-    }
     int faces[] = {1, 2, 3, 4};
+    int slots[] = {1, 3, 5, 7};
     int slots2[] = {1, 3, 7, 5};
     int slots3[] = {7, 5, 1, 3};
-    int slots4[] = {3, 7, 5, 1};
-    while (daisyCount != 4) {
+    int slots4[] = {7, 3, 5, 1};
+    int slots5[] = {3, 7, 5, 1};
+
+    while (daisyCount < 4) {
+        int count = 0;
+        for (int x: slots) {
+            if (this->cube[5].getColor(x) == 'w') {
+                daisyCount++;
+                while (this->cube[0].getColor(slots4[count]) == 'w') {
+                    turnU();
+                }
+                if (x == 1) {
+                    turnF();
+                    turnF();
+                }
+                if (x == 3) {
+                    turnL();
+                    turnL();
+                }
+                if (x == 5) {
+                    turnR();
+                    turnR();
+                }
+                if (x == 7) {
+                    turnB();
+                    turnB();
+                }
+            }
+            count++;
+        }
+
+
         for (int x: faces) {
             if (this->cube[x].getColor(3) == 'w') {
                 daisyCount++;
@@ -155,41 +136,95 @@ void Cube::solveCube() {
         }
         for (int x: faces) {
             if (this->cube[x].getColor(1) == 'w') {
+                daisyCount++;
                 if (x == 1) {
                     turnL();
+                    turnUp();
+                    turnF();
                 }
                 if (x == 2) {
                     turnF();
+                    turnUp();
+                    turnR();
                 }
                 if (x == 3) {
                     turnR();
+                    turnUp();
+                    turnB();
                 }
                 if (x == 4) {
                     turnB();
+                    turnUp();
+                    turnL();
                 }
             }
             if (this->cube[x].getColor(7) == 'w') {
-                while (this->cube[0].getColor(slots4[x - 1]) == 'w') {
+                daisyCount++;
+                while (this->cube[0].getColor(slots3[x - 1]) == 'w') {
                     turnU();
                 }
                 if (x == 1) {
+                    turnLp();
+                    turnF();
                     turnL();
+
                 }
                 if (x == 2) {
+                    turnFp();
+                    turnR();
                     turnF();
                 }
                 if (x == 3) {
+                    turnRp();
+                    turnB();
                     turnR();
                 }
                 if (x == 4) {
+                    turnBp();
+                    turnL();
                     turnB();
                 }
             }
-
+        }
+        daisyCount = 0;
+        for (int x: slots) {
+            if (this->cube[0].getColor(x) == 'w') {
+                daisyCount++;
+            }
         }
     }
     //
+    // resolve daisy
+    for (int x: faces) {
+        while (this->cube[x].getColor(1) != (this->cube[x].getColor(4)) and
+               this->cube[0].getColor(slots5[x - 1]) != 'w') {
+            turnU();
+        }
+        if (x == 1) {
+            turnL();
+            turnL();
+        }
+        if (x == 2) {
+            turnF();
+            turnF();
+        }
+        if (x == 3) {
+            turnR();
+            turnR();
+        }
+        if (x == 4) {
+            turnB();
+            turnB();
+        }
+    }
+    //
+    int cornerSlots[] = {0, 2, 6, 8};
+    // white corners
+    for (int x: cornerSlots){
+
+    }
 }
+
 
 void Cube::rightHandRule(int face, bool up) {
     if (up) {
