@@ -9,4 +9,5 @@ int main() {
     rubiks.mixCube();
     rubiks.solveCube();
     rubiks.printCube();
+
 }

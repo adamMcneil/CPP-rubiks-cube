@@ -13,6 +13,8 @@ iostream
 -
 random
 -
+algorithm
+-
 
 /home/adam/programs/CLionProjects/untitled/Cube.h
 string
@@ -20,13 +22,5 @@ string
 Face.h
 /home/adam/programs/CLionProjects/untitled/Face.h
 
-/home/adam/programs/CLionProjects/untitled/Face.h
-
-/home/adam/programs/CLionProjects/untitled/main.cpp
-iostream
--
-Cube.h
-/home/adam/programs/CLionProjects/untitled/Cube.h
-Face.h
 /home/adam/programs/CLionProjects/untitled/Face.h
 

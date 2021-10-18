@@ -27,9 +27,14 @@ public:
     Face cube[6] = {Face(' '),Face(' '),Face(' '),Face(' '),Face(' '),Face(' ')};
     void solveCube();
     void rightHandRule(int, bool);
+    void leftHandRule(int);
     bool isCubeSolved();
     void mixCube();
     void printCube();
+    bool whiteIsSolved();
+    bool midRowComplete();
+    bool yellowCrossIsSolved();
+
 private:
 };
 
