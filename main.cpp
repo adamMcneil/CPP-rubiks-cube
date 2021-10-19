@@ -4,6 +4,8 @@
 
 
 int main() {
+    srand(time(NULL));
+
     char colors[6] = {'y', 'b', 'r', 'g', 'o', 'w'};
     Cube rubiks(colors);
     rubiks.mixCube();

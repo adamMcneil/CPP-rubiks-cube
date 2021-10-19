@@ -6,6 +6,8 @@
 #include <iostream>
 #include <random>
 #include <algorithm>
+#include <stdlib.h>
+#include <time.h>
 
 Cube::Cube(char colors[6]) {
     for (int i = 0; i < 6; i++) {
@@ -15,10 +17,11 @@ Cube::Cube(char colors[6]) {
 
 void Cube::mixCube() {
     for (int x = 0; x < 15; x++) {
-        std::random_device dev;
-        std::mt19937 rng(dev());
-        std::uniform_int_distribution<std::mt19937::result_type> dist12(0, 11);
-        int randomNum = dist12(rng);
+//        std::random_device dev;
+//        std::mt19937 rng(dev());
+//        std::uniform_int_distribution<std::mt19937::result_type> dist12(0, 11);
+//        int randomNum = dist12(rng);
+        int randomNum = rand() % 11;
         if (randomNum == 0) {
             turnU();
         }
@@ -83,20 +86,28 @@ bool Cube::midRowComplete() {
     return true;
 }
 
-bool Cube::yellowCrossIsSolved() {
-    if (this->cube[0].getColor(1) != 'y') {
-        return false;
+bool Cube::yellowCornersAreInPlace() {
+    for (int x = 0; x < 4; x++) {
+        while (this->cube[0].getColor(6) != 'y') {
+            rightHandRule(2, true);
+        }
+        turnU();
     }
-    if (this->cube[0].getColor(3) != 'y') {
-        return false;
+    char colors[] = {' ', 'b', 'r', 'g', 'o'};
+    int count = 0;
+    for (int x = 1; x < 5; x++) {
+        for (int y = 0; y < 4; y++) {
+            if (this->cube[x].getColor(0) == colors[x] and this->cube[x].getColor(2) == colors[x]) {
+                count++;
+                break;
+            }
+            turnU();
+        }
     }
-    if (this->cube[0].getColor(5) != 'y') {
-        return false;
+    if (count == 4) {
+        return true;
     }
-    if (this->cube[0].getColor(7) != 'y') {
-        return false;
-    }
-    return true;
+    return false;
 }
 
 
@@ -383,63 +394,133 @@ void Cube::solveCube() {
     }
 //
 // yellow corners
-//    std::string testStrings2[] = {"bo", "br", "gr", "go", "bo", "br"};
-//    int face[] = {4, 1, 2, 3, 4, 1, 2};
-//    int topSlots[] = {0, 6, 8, 2, 0, 6};
-//    bool doIt = false;
-//    for (int x = 1; x < 5; x++) {
-//
-//        std::string test = testStrings2[x];
-//        std::sort(test.begin(), test.end());
-//
-//        std::string test2 = testStrings2[x + 1];
-//        std::sort(test2.begin(), test2.end());
-//
-//        for (int y = 0; y < 4; y++) {
-//            doIt = false;
-//
-//            std::string colorString;
-//            colorString.append(1, this->cube[face[x]].getColor(2));
-//            colorString.append(1, this->cube[face[x + 1]].getColor(0));
-//            std::sort(colorString.begin(), colorString.end());
-//
-//            std::string colorString2;
-//            colorString2.append(1, this->cube[face[x + 1]].getColor(2));
-//            colorString2.append(1, this->cube[face[x + 2]].getColor(0));
-//            std::sort(colorString2.begin(), colorString2.end());
-//
-//            if ((not std::equal(colorString.begin(), colorString.end(), test.begin(), test.end())) &&
-//                (not std::equal(colorString2.begin(), colorString2.end(), test2.begin(), test2.end()))){
-//                for (char c: colorString){
-//                    for (char k: colorString2){
-//                        if (c == k){
-//                            doIt = true;
-//                        }
-//                    }
-//                }
-//                if (doIt) {
-//                    rightHandRule(face[x], false);
-//                    rightHandRule(face[x], false);
-//                    rightHandRule(face[x], false);
-//                    leftHandRule(face[x + 1]);
-//                    leftHandRule(face[x + 1]);
-//                    leftHandRule(face[x + 1]);
-//                }
-//            }
-//        }
-//        turnU();
-//    }
+    std::string testStrings2[] = {"bo", "br", "gr", "go", "bo", "br"};
+    char colors[] = {'b', 'r', 'g', 'o', 'b'};
+    int face[] = {4, 1, 2, 3, 4, 1, 2};
+    int topSlots[] = {0, 6, 8, 2, 0, 2};
+    while (not yellowCornersAreInPlace()) {
+        for (int x = 1; x < 5; x++) {
+
+            std::string test = testStrings2[x];
+            std::sort(test.begin(), test.end());
+
+            std::string test2 = testStrings2[x + 1];
+            std::sort(test2.begin(), test2.end());
+
+            for (int y = 0; y < 4; y++) {
+
+                std::string colorString;
+                colorString.append(1, this->cube[0].getColor(topSlots[x]));
+                colorString.append(1, this->cube[face[x]].getColor(2));
+                colorString.append(1, this->cube[face[x + 1]].getColor(0));
+                std::sort(colorString.begin(), colorString.end());
+                colorString.erase(remove(colorString.begin(), colorString.end(), 'y'), colorString.end());
+
+                std::string colorString2;
+                colorString2.append(1, this->cube[0].getColor(topSlots[x + 1]));
+                colorString2.append(1, this->cube[face[x + 1]].getColor(2));
+                colorString2.append(1, this->cube[face[x + 2]].getColor(0));
+                std::sort(colorString2.begin(), colorString2.end());
+                colorString2.erase(remove(colorString2.begin(), colorString2.end(), 'y'), colorString2.end());
+
+                if (colorString.find(colors[x]) != -1 and colorString2.find(colors[x]) != -1 and
+                    not std::equal(colorString.begin(), colorString.end(), test.begin(), test.end()) and
+                    not std::equal(colorString2.begin(), colorString2.end(), test2.begin(), test2.end())) {
+                    rightHandRule(face[x], false);
+                    rightHandRule(face[x], false);
+                    rightHandRule(face[x], false);
+                    leftHandRule(face[x + 1]);
+                    leftHandRule(face[x + 1]);
+                    leftHandRule(face[x + 1]);
+                    break;
+                }
+                turnU();
+            }
+            turnU();
+        }
+    }
+
+
 
 //
-// flip yellow corners
-//    for (int x = 0; x < 4; x++) {
-//        while (this->cube[0].getColor(6) != 'y') {
-//            rightHandRule(2, true);
-//        }
-//        turnU();
-//    }
+// finish it
+    int FACES[] = {0, 4, 1, 2, 3};
+    char COLORS[] = {'g', 'o', 'b', 'r', 'g'};
+    bool isSolved = false;
+    while (not isCubeSolved()) {
+        finalMove(1);
+        for (int x = 1; x < 5; x++) {
+            if (this->cube[FACES[x]].getColor(0) == COLORS[x] and
+                this->cube[FACES[x]].getColor(1) == COLORS[x] and
+                this->cube[FACES[x]].getColor(2) == COLORS[x]) {
+                finalMove(x);
+                isSolved = true;
+                break;
+            }
+        }
+    }
+
 //
 
+}
+
+void Cube::finalMove(int face) {
+    if (face == 1) {
+        turnF();
+        turnF();
+        turnUp();
+        turnRp();
+        turnL();
+        turnF();
+        turnF();
+        turnR();
+        turnLp();
+        turnUp();
+        turnF();
+        turnF();
+    }
+    if (face == 2) {
+        turnR();
+        turnR();
+        turnUp();
+        turnBp();
+        turnF();
+        turnR();
+        turnR();
+        turnB();
+        turnFp();
+        turnUp();
+        turnR();
+        turnR();
+    }
+    if (face == 3) {
+        turnB();
+        turnB();
+        turnUp();
+        turnR();
+        turnLp();
+        turnB();
+        turnB();
+        turnRp();
+        turnL();
+        turnUp();
+        turnB();
+        turnB();
+    }
+    if (face == 4) {
+        turnL();
+        turnL();
+        turnUp();
+        turnB();
+        turnFp();
+        turnL();
+        turnL();
+        turnBp();
+        turnF();
+        turnUp();
+        turnL();
+        turnL();
+    }
 }
 
 void Cube::rightHandRule(int face, bool up) {
@@ -512,9 +593,15 @@ void Cube::leftHandRule(int face) {
 }
 
 bool Cube::isCubeSolved() {
-    // finish
-    std::cout << "isCubedSolved is not finished";
-    return false;
+    char colors[6] = {'y', 'b', 'r', 'g', 'o', 'w'};
+    for (int x = 0; x<6; x++){
+        for (int y = 0; y<9; y++) {
+            if (this->cube[x].getColor(y) != colors[x]){
+                return false;
+            }
+        }
+    }
+    return true;
 }
 
 void Cube::printCube() {

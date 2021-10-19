@@ -33,7 +33,8 @@ public:
     void printCube();
     bool whiteIsSolved();
     bool midRowComplete();
-    bool yellowCrossIsSolved();
+    bool yellowCornersAreInPlace();
+    void finalMove(int);
 
 private:
 };

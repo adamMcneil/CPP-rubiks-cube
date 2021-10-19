@@ -15,6 +15,10 @@ random
 -
 algorithm
 -
+stdlib.h
+-
+time.h
+-
 
 /home/adam/programs/CLionProjects/untitled/Cube.h
 string
